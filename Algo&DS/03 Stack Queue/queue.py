@@ -5,10 +5,10 @@ class queue:
     def __init__(self):
         self.list = []
 
-    def push(self, data):
+    def enqueue(self, data):
         self.list.insert(0, data)
 
-    def pop(self):
+    def dequeue(self):
         if len(self.list):
             return self.list.pop()
 
@@ -30,17 +30,17 @@ class queue:
 if __name__ == '__main__':
     qu = queue()
 
-    qu.push(100)
-    qu.push(200)
-    qu.push(300)
-    qu.push(400)
-    qu.push(500)
-    qu.push(600)
+    qu.enqueue(100)
+    qu.enqueue(200)
+    qu.enqueue(300)
+    qu.enqueue(400)
+    qu.enqueue(500)
+    qu.enqueue(600)
 
     print('size', qu.size())
-    print('pop', qu.pop())
+    print('dequeue', qu.dequeue())
     print('size', qu.size())
     print('front', qu.front())
     print('back', qu.back())
     print('empty', qu.empty())
-    print('pop', qu.pop())
+    print('dequeue', qu.dequeue())
