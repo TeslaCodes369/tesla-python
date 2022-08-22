@@ -10,7 +10,7 @@ class queueSt:
         self.stq.push(data)
 
     def dequeue(self):
-        if self.stq.size() < 1:
+        if self.stq.size() < 1:,
             return
 
         while self.stq.size() != 1:
