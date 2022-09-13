@@ -179,14 +179,34 @@ class RBT:
                 node.right = Node(data, node)
                 self.fix_RedBlack_Tree(node.right)
 
+    def get_height(self, node):
+        if node is None:
+            return -1
+
+        l = self.get_height(node.left)
+        r = self.get_height(node.right)
+
+        if l > r:
+            return l+1
+        else:
+            return r+1
+
+    def height(self):
+        return self.get_height(self.root)
+
 
 if __name__ == '__main__':
     rbt = RBT()
     rbt.insert(1)
     rbt.insert(2)
     rbt.insert(3)
+    print('height', rbt.height())
     rbt.insert(4)
     rbt.insert(5)
+    print('height', rbt.height())
     rbt.insert(6)
     rbt.insert(7)
+    print('height', rbt.height())
     rbt.insert(8)
+
+    print('height', rbt.height())
