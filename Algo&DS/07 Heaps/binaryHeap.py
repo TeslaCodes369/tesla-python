@@ -1,7 +1,4 @@
-from select import select
-
-
-CAPACITY = 10
+CAPACITY = 15
 
 
 class MaxHeap:
@@ -36,10 +33,46 @@ class MaxHeap:
         return index*2 + 2
 
     def printHeap(self):
-        print(self.heap)
+        print('Heap Data:')
+        for i in range(0, self.index):
+            print(self.heap[i], end=' ')
+        print('')
 
     def getMax(self):
         return self.heap[0]
+
+    def fixDown(self, index):
+        leftIndex = mHeap.leftChild(index)
+        rightIndex = mHeap.rightChild(index)
+
+        if leftIndex > CAPACITY - 1:
+            return
+
+        largestIndex = index
+
+        if leftIndex < self.index - 1 and self.heap[largestIndex] < self.heap[leftIndex]:
+            largestIndex = leftIndex
+
+        if rightIndex < self.index - 1 and self.heap[largestIndex] < self.heap[rightIndex]:
+            largestIndex = rightIndex
+
+        if index != largestIndex:
+            self.heap[largestIndex], self.heap[index] = self.heap[index], self.heap[largestIndex]
+            self.fixDown(largestIndex)
+
+    def remove(self, index):
+        if index <= self.index:
+            self.heap[index], self.heap[self.index -
+                                        1] = self.heap[self.index-1], self.heap[index]
+            self.index -= 1
+            self.fixDown(index)
+
+    def poll(self):
+        data = self.heap[0]
+
+        self.remove(0)
+
+        return data
 
 
 if __name__ == '__main__':
@@ -61,3 +94,9 @@ if __name__ == '__main__':
     mHeap.printHeap()
 
     print('Max Element', mHeap.getMax())
+
+    print('Poll heap', mHeap.poll())
+    mHeap.printHeap()
+
+    mHeap.remove(2)
+    mHeap.printHeap()
