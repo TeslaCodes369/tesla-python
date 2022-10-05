@@ -1,4 +1,4 @@
-CAPACITY = 15
+CAPACITY = 100
 
 
 class MaxHeap:
@@ -74,6 +74,11 @@ class MaxHeap:
 
         return data
 
+    def heap_sort(self):
+        print('heap sort:')
+        for _ in range(0, self.index):
+            print(self.poll(), end=' ')
+
 
 if __name__ == '__main__':
     mHeap = MaxHeap()
@@ -100,3 +105,5 @@ if __name__ == '__main__':
 
     mHeap.remove(2)
     mHeap.printHeap()
+
+    mHeap.heap_sort()
